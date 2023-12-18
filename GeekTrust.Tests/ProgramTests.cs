@@ -11,6 +11,7 @@ namespace GeekTrust.Tests
     {
 
         private readonly string ROOT_DIR = "../../../../GeekTrust/";
+        private readonly CourseScheduler courseScheduler = new();
 
         private void TestFile(string fileName, string output)
         {
@@ -19,7 +20,7 @@ namespace GeekTrust.Tests
             List<string> results = [];
 
             foreach (var command in commands)
-                results.Add(Program.ProcessCommand(command));
+                results.Add(courseScheduler.ProcessCommand(command));
 
             string result = string.Join(Environment.NewLine, results);
             Assert.AreEqual(result, output, $"Output of {fileName} does not match");

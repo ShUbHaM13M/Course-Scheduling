@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GeekTrust
 {
-    class Course(string name, string instructor, DateTime date, int minEmployees, int maxEmployees)
+    public class Course(string name, string instructor, DateTime date, int minEmployees, int maxEmployees)
     {
         public string Name { get; } = name;
         public string Instructor { get; } = instructor;
