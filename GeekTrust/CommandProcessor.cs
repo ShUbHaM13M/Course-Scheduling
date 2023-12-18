@@ -7,7 +7,7 @@ using Command = System.ValueTuple<string, System.Collections.Generic.Dictionary<
 
 namespace GeekTrust
 {
-    class CommandProcessor
+    public class CommandProcessor
     {
         public static readonly Dictionary<string, string[]> commands = new()
         {
@@ -38,9 +38,7 @@ namespace GeekTrust
 
             Dictionary<string, string> argMap = [];
             foreach (var (key, value) in argKeys.Zip(argValues))
-            {
                 argMap.Add(key, value);
-            }
 
             return (command, argMap);
         }

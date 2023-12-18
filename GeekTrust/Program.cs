@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GeekTrust
 {
-    class Program
+    public class Program
     {
         static readonly Dictionary<string, Course> courses = [];
         static void Main(string[] args)
@@ -18,7 +18,12 @@ namespace GeekTrust
                 }
                 string fileName = args[0];
                 var commands = CommandProcessor.ProcessFile(fileName);
-                commands.ForEach(ProcessCommand);
+                List<string> results = [];
+                foreach (var command in commands)
+                {
+                    results.Add(ProcessCommand(command));
+                }
+                Console.WriteLine(string.Join(Environment.NewLine, results));
             }
             catch (Exception ex)
             {
@@ -27,7 +32,7 @@ namespace GeekTrust
             }
         }
 
-        private static void ProcessCommand((string, Dictionary<string, string>) data)
+        public static string ProcessCommand((string, Dictionary<string, string>) data)
         {
             var (command, args) = data;
             string result = "";
@@ -47,7 +52,7 @@ namespace GeekTrust
                     break;
                 default: break;
             }
-            Console.WriteLine(result);
+            return result;
         }
 
         private static string AddCourse(Dictionary<string, string> args)

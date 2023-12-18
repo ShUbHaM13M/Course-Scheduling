@@ -44,7 +44,7 @@ namespace GeekTrust
                 results.Add(result);
             };
             Alloted = true;
-            return string.Join("\n", results);
+            return string.Join(Environment.NewLine, results);
         }
 
         public string GetCourseRegisterationId(string userName, string userEmail)
